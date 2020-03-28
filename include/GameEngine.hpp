@@ -8,6 +8,8 @@
 namespace RTS{
 
     class GameEngine{
+    private:
+    
       GameManager*   gameManager;
       Scene*         currentScene;
 
