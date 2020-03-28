@@ -6,6 +6,7 @@
  namespace RTS{
 
     class LogSystem{
+    private:
       /*string       logPath;
       list<string> logData;*/
 

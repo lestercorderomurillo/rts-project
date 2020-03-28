@@ -1,12 +1,33 @@
+//#define WINDOWS
+#ifdef WINDOWS
+  #include <direct.h>
+  #define GetCurrentDir _getcwd
+#else
+  #include <unistd.h>
+  #define GetCurrentDir getcwd
+#endif
+
+#include <string>
 #include "GameEngine.hpp"
 #include "scenes/WorldScene.hpp"
 
+using namespace std;
+
 namespace RTS{
+
+    string GameEngine::getWorkingDirectory() {
+      char chrArray[FILENAME_MAX];
+      GetCurrentDir(chrArray,FILENAME_MAX);
+      string strFormat(chrArray);
+      return strFormat;
+    }
 
    GameEngine::GameEngine(){
 
      this->gameManager = new GameManager();
      this->currentScene = new WorldScene(this->gameManager);
+
+     this->gameManager->getLogger()->out("Working Directory: " + getWorkingDirectory());
 
      if (fetchResources()){
         runGameLoop();
@@ -21,7 +42,8 @@ namespace RTS{
    }
 
    int GameEngine::fetchResources(){
-     return 1;
+     this->gameManager->getBatch()->addFont(0, getWorkingDirectory() + "/assets/fonts/common.ttf");
+     return (this->gameManager->getBatch()->numErrors() == 0);
    }
 
    void GameEngine::runGameLoop(){

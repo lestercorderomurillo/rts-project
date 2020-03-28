@@ -6,10 +6,10 @@ OBJ_DIR  := obj
 APP_DIR  := bin
 TARGET   := program
 INCLUDE  := -I include/
-SRC      :=                      \
-   $(wildcard src/managed/*.cpp) \
-	 $(wildcard src/scenes/*.cpp) \
-   $(wildcard src/*.cpp)         \
+SRC      :=                       \
+	$(wildcard src/managed/*.cpp) \
+	$(wildcard src/scenes/*.cpp)  \
+	$(wildcard src/*.cpp)         \
 
 OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 

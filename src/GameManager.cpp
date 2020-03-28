@@ -15,13 +15,14 @@ namespace RTS{
      this->window = new RenderWindow(VideoMode(1280, 720), "Project", Style::Default, glset);
      this->window->setFramerateLimit(60);
      this->window->setView(viewset);
+     this->batch = new ResourceBatch(this->logger);
 
    }
 
    GameManager::~GameManager(){
      delete this->logger;
      delete this->window;
-
+     delete this->batch;
    }
 
    LogSystem* GameManager::getLogger(){
@@ -30,6 +31,10 @@ namespace RTS{
 
    RenderWindow* GameManager::getWindow(){
      return this->window;
+   }
+
+   ResourceBatch* GameManager::getBatch(){
+     return this->batch;
    }
 
 }

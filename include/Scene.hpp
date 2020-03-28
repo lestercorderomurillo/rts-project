@@ -5,6 +5,7 @@
 namespace RTS{
 
     class Scene{
+    private:
       GameManager* gameManager;
 
     public:

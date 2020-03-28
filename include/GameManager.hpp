@@ -6,6 +6,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Config.hpp>
 #include "managed/LogSystem.hpp"
+#include "managed/ResourceBatch.hpp"
 
 using namespace sf;
 
@@ -16,6 +17,7 @@ namespace RTS{
 
       RenderWindow*  window;
       LogSystem*     logger;
+      ResourceBatch* batch;
 
     public:
       GameManager();
@@ -23,6 +25,7 @@ namespace RTS{
 
       LogSystem* getLogger();
       RenderWindow* getWindow();
+      ResourceBatch* getBatch();
 
    };
 

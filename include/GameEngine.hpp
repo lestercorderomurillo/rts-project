@@ -3,6 +3,7 @@
 
 #include "GameManager.hpp"
 #include "Scene.hpp"
+#include <string>
 
 namespace RTS{
 
@@ -14,6 +15,7 @@ namespace RTS{
       GameEngine();
       ~GameEngine();
 
+      std::string getWorkingDirectory();
       int fetchResources();
       void runGameLoop();
 
