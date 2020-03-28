@@ -9,6 +9,7 @@ INCLUDE  := -I include/
 SRC      :=                          \
 	$(wildcard src/managed/*.cpp)    \
 	$(wildcard src/scenes/*.cpp)     \
+	$(wildcard src/scenes/WorldScene/*.cpp)     \
 	$(wildcard src/rendering/*.cpp)  \
 	$(wildcard src/*.cpp)            \
 

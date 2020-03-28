@@ -10,7 +10,6 @@
 #include <string>
 #include "GameEngine.hpp"
 #include "scenes/WorldScene.hpp"
-#include "rendering/BaseRendering.hpp"
 
 using namespace std;
 
@@ -26,14 +25,14 @@ namespace RTS{
    GameEngine::GameEngine(){
 
      this->gameManager = new GameManager();
-     this->currentScene = new WorldScene(this->gameManager);
-
+     
      this->gameManager->getLogger()->out("Working Directory: " + getWorkingDirectory());
 
      if (fetchResources()){
+        this->currentScene = new WorldScene(this->gameManager);
         runGameLoop();
      }else{
-       this->gameManager->getLogger()->out(2, "Error while loading resources.");
+        this->gameManager->getLogger()->out(2, "Error while loading resources.");
      }
 
    }
@@ -50,11 +49,7 @@ namespace RTS{
    void GameEngine::runGameLoop(){
 
      Event event;
-
-     BaseRendering test_prof(this->gameManager);
-     test_prof.setTextColor(Color(255,255,255));
-     test_prof.setTextSize(18);
-
+     
      while (this->gameManager->getWindow()->isOpen()){
 
         while (this->gameManager->getWindow()->pollEvent(event)){
@@ -73,9 +68,8 @@ namespace RTS{
         }
 
         this->gameManager->getWindow()->clear(Color(32,32,32));
-        //this->currentScene->tick();
-        //this->currentScene->draw();
-        test_prof.drawText("prueba de funcionamiento", 20, 20, true);
+        this->currentScene->tick();
+        this->currentScene->draw();
 
         this->gameManager->getWindow()->display();
 
