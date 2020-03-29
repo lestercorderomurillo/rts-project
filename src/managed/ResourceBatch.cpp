@@ -13,6 +13,9 @@ namespace RTS{
       this->output = ptr;
       this->errorCounter = 0;
     }
+
+    ResourceBatch::~ResourceBatch(){
+    }
     
 
     void ResourceBatch::addTexture(int storeTo, string path){

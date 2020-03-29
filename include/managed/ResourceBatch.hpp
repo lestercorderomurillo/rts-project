@@ -25,6 +25,7 @@ using namespace std;
     public:
 
       ResourceBatch(LogSystem*);
+      ~ResourceBatch();
 
       void addTexture(int storeTo, string path);
       void addFont(int storeTo, string path);

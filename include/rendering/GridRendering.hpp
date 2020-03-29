@@ -20,11 +20,7 @@ namespace RTS{
 
       void tick();
       virtual void draw(RenderTarget& gl_target, RenderStates gl_states) const;
-      /*virtual void draw(RenderTarget& gl_target, RenderStates gl_states) const{
-        gl_states.transform *= getTransform();
-        gl_states.texture    = &gl_texture;
-        gl_target.draw(gl_vertexes, gl_states);
-      }*/
+      
 
    };
 

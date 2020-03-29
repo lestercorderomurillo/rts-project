@@ -4,7 +4,7 @@ namespace RTS{
 
    WorldScene::WorldScene(GameManager* ptr) : Scene(ptr){
       this->debugging       = new BaseRendering(this->gameManager);
-      //this->gridRenderer    = new GridRendering(this->gameManager);
+      this->gridRenderer    = new GridRendering(this->gameManager);
       this->camera          = new Camera(this->gameManager->getWindow());
       this->refresh_tilemap = true;
    }
@@ -12,7 +12,7 @@ namespace RTS{
    WorldScene::~WorldScene(){
       delete this->debugging;
       delete this->camera;
-      //delete this->gridRenderer;
+      delete this->gridRenderer;
    }
 
    void WorldScene::tick(){
@@ -27,7 +27,8 @@ namespace RTS{
       debugging->setTextColor(Color(255,255,255));
       debugging->setTextSize(18);
       debugging->drawText("(" + to_string(this->camera->getX()) + ", " + to_string(this->camera->getY()) + ")", 20, 20, true);
-      //this->gameManager->getWindow()->draw(*this->gridRenderer);
+      this->gridRenderer->tick();
+      this->gameManager->getWindow()->draw(*this->gridRenderer);
    }
 
 }
