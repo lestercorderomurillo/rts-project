@@ -20,9 +20,10 @@ namespace RTS{
    }
 
    GameManager::~GameManager(){
-     delete this->logger;
+
      delete this->window;
      delete this->batch;
+     //delete this->logger;
    }
 
    LogSystem* GameManager::getLogger(){

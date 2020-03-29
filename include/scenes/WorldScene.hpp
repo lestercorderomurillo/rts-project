@@ -4,6 +4,8 @@
 #include "../Scene.hpp"
 #include "../GameManager.hpp"
 #include "../rendering/BaseRendering.hpp"
+#include "../rendering/GridRendering.hpp"
+
 #include "WorldScene/Camera.hpp"
 
 namespace RTS{
@@ -12,7 +14,10 @@ namespace RTS{
 
     private:
       BaseRendering*  debugging;
+      GridRendering*  gridRenderer;
+
       Camera*         camera;
+      bool            refresh_tilemap;
 
     public:
       WorldScene(GameManager* ptr);
