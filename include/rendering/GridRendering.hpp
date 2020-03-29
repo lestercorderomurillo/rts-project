@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "GameManager.hpp"
+#include "scenes/WorldScene/Grid.hpp"
+#include "scenes/WorldScene/Camera.hpp"
 
 using namespace std;
 using namespace sf;
@@ -13,18 +15,19 @@ namespace RTS{
 
     private:
         GameManager* gameManager;
+        Camera*      camera;
         Grid*        grid;
 
         VertexArray  gl_vertexes;
+        Vertex*      gl_vertexfx;
         Texture      gl_texture;
 
     public:
-      GridRendering(GameManager* ptr);
+      GridRendering(GameManager*, Grid*, Camera*);
 
       void tick();
-      virtual void draw(RenderTarget& gl_target, RenderStates gl_states) const;
+      virtual void draw(RenderTarget&, RenderStates) const;
       
-
    };
 
  }

@@ -17,7 +17,7 @@ namespace RTS{
       GridRendering*  gridRenderer;
 
       Camera*         camera;
-      bool            refresh_tilemap;
+      Grid*           grid;
       
     public:
       WorldScene(GameManager* ptr);
