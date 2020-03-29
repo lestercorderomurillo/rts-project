@@ -18,9 +18,6 @@ namespace RTS{
       void reset();
       int getTileID(int, int);
       int getPoint(int, int, char);
-      int getMapSize();
-      int getTileWidth();
-      int getTileHeight();
       void setTileID(int, int, int);
       void setPoint(int, int, char, int);
 

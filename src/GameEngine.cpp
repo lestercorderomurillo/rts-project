@@ -43,6 +43,7 @@ namespace RTS{
 
    int GameEngine::fetchResources(){
      this->gameManager->getBatch()->addFont(0, getWorkingDirectory() + "/assets/fonts/common.ttf");
+     this->gameManager->getBatch()->addTexture(0, getWorkingDirectory() + "/assets/images/tiles.png");
      return (this->gameManager->getBatch()->numErrors() == 0);
    }
 

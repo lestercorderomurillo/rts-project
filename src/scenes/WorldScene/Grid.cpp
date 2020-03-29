@@ -4,17 +4,18 @@ namespace RTS{
 
     Grid::Grid(){
        reset();
+       setPoint(1,1,0,15);
     }
 
     void Grid::reset(){
-      for(int x = 0; x < getMapSize(); x++){
-        for(int y = 0; y < getMapSize(); y++){
+      for(int x = 0; x < MAPSIZE; x++){
+        for(int y = 0; y < MAPSIZE; y++){
           this->world_tile[x][y] = 0;
         }
       }
 
-      for(int x = 0; x < (getMapSize()+1)*(getMapSize()+1); x++){
-        for(int y = 0; y < (getMapSize()+1)*(getMapSize()+1); y++){
+      for(int x = 0; x < (MAPSIZE+1)*(MAPSIZE+1); x++){
+        for(int y = 0; y < (MAPSIZE+1)*(MAPSIZE+1); y++){
           this->world_grid[x][y] = 0;
         }
       }
@@ -32,18 +33,6 @@ namespace RTS{
         case 3: return this->world_grid[x+0][y+1]; break;
       }
       return (-1);
-    }
-
-    int Grid::getMapSize(){
-      return MAPSIZE;
-    }
-
-    int Grid::getTileWidth(){
-      return TILEW;
-    }
-
-    int Grid::getTileHeight(){
-      return TILEH;
     }
 
     void Grid::setTileID(int x, int y, int value){

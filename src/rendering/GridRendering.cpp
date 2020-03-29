@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "scenes/WorldScene/Grid.hpp"
 #include "rendering/GridRendering.hpp"
-
 using namespace std;
 using namespace sf;
 
@@ -11,32 +10,39 @@ namespace RTS{
       this->gameManager = ptra;
       this->grid        = ptrb;
       this->camera      = ptrc;
+      this->gl_texture  = *this->gameManager->getBatch()->getTexture(0);
     }
 
     void GridRendering::tick(){
 
         this->gl_vertexes.setPrimitiveType(Quads);
-        this->gl_vertexes.resize(this->grid->getMapSize() * this->grid->getMapSize() * 4);
+        this->gl_vertexes.resize(MAPSIZE * MAPSIZE * 4);
 
         int cx = this->camera->getX() + 100;
         int cy = this->camera->getY() + 100;
 
-        for(int x = 0; x < this->grid->getMapSize(); x++){
-          for(int y = 0; y < this->grid->getMapSize(); y++){
+        for(int x = 0; x < MAPSIZE; x++){
+          for(int y = 0; y < MAPSIZE; y++){
 
-              int fx = cx + ((x - y) * (this->grid->getTileWidth()/2));
-              int fy = cy + ((x + y) * (this->grid->getTileHeight()/2));
+              int fx = cx + ((x - y) * (TILEW/2));
+              int fy = cy + ((x + y) * (TILEH/2));
 
-              this->gl_vertexfx = &gl_vertexes[((this->grid->getMapSize() * y) + x) * 4];
-              this->gl_vertexfx[0].position = Vector2f(fx , fy );
-              this->gl_vertexfx[1].position = Vector2f(fx + (TILEW / 2), fy + (TILEH / 2));
-              this->gl_vertexfx[2].position = Vector2f(fx , fy + TILEH);
-              this->gl_vertexfx[3].position = Vector2f(fx - (TILEW / 2), fy + (TILEH / 2));
+              this->gl_vertexfx = &gl_vertexes[((MAPSIZE * y) + x) * 4];
 
-              for(int ci = 0; ci < 4; ci++){
-                this->gl_vertexfx[ci].color = Color(190, 222, 145);
-              }
-              
+              int tile = 0;
+              int tx = tile % (gl_texture.getSize().x / TILEW);
+              int ty = tile / (gl_texture.getSize().x / TILEW);
+
+              this->gl_vertexfx[0].position = Vector2f(fx , fy - this->grid->getPoint(x, y, 0));
+              this->gl_vertexfx[1].position = Vector2f(fx + (TILEW / 2), fy + (TILEH / 2) - this->grid->getPoint(x, y, 1));
+              this->gl_vertexfx[2].position = Vector2f(fx , fy + TILEH - this->grid->getPoint(x, y, 2));
+              this->gl_vertexfx[3].position = Vector2f(fx - (TILEW / 2), fy + (TILEH / 2) - this->grid->getPoint(x, y, 3));
+
+              this->gl_vertexfx[0].texCoords = Vector2f(tx * TILEW, ty * TILEW);
+              this->gl_vertexfx[1].texCoords = Vector2f((tx+1) * TILEW, ty * TILEW);
+              this->gl_vertexfx[2].texCoords = Vector2f((tx+1) * TILEW, (ty+1) * TILEW);
+              this->gl_vertexfx[3].texCoords = Vector2f(tx * TILEW, (ty+1) * TILEW);
+
               for(unsigned int fc = 0; fc < 4; fc++){
                 Vector2f fp = this->gameManager->getWindow()->mapPixelToCoords(
                   Vector2i(this->gl_vertexfx[fc].position.x,
