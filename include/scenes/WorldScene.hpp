@@ -18,7 +18,7 @@ namespace RTS{
 
       Camera*         camera;
       bool            refresh_tilemap;
-
+      
     public:
       WorldScene(GameManager* ptr);
       ~WorldScene();

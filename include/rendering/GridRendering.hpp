@@ -1,5 +1,6 @@
 #ifndef RTS_GAME_SCENE_WORLD_GRID_RENDERER
 #define RTS_GAME_SCENE_WORLD_GRID_RENDERER
+
 #include <SFML/Graphics.hpp>
 #include "GameManager.hpp"
 
@@ -12,6 +13,8 @@ namespace RTS{
 
     private:
         GameManager* gameManager;
+        Grid*        grid;
+
         VertexArray  gl_vertexes;
         Texture      gl_texture;
 

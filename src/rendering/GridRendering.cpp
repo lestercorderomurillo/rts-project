@@ -1,8 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include "rendering/GridRendering.hpp"
-#define MAPSIZE 8
-#define TILEW 48
-#define TILEH 24
 
 using namespace std;
 using namespace sf;
