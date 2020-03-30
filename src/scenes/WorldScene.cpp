@@ -1,4 +1,5 @@
 #include "scenes/WorldScene.hpp"
+#include "Unit.hpp"
 
 namespace RTS{
 
@@ -11,6 +12,8 @@ namespace RTS{
       this->grid->setTileCircleAreaHeight(8, 8, 10, 4);
       this->grid->setTileCircleAreaHeight(8, 8, 15, 3);
       this->grid->setTileCircleAreaID(8, 8, 1, 5);*/
+
+      Unit dummy(this->gameManager);
    }
 
    WorldScene::~WorldScene(){

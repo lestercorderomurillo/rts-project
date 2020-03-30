@@ -42,9 +42,11 @@ namespace RTS{
    }
 
    int GameEngine::fetchResources(){
-     this->gameManager->getBatch()->addFont(0, getWorkingDirectory() + "/assets/fonts/common.ttf");
-     this->gameManager->getBatch()->addTexture(0, getWorkingDirectory() + "/assets/images/tiles.png");
-     return (this->gameManager->getBatch()->numErrors() == 0);
+      this->gameManager->getBatch()->addFont(0, getWorkingDirectory() + "/assets/fonts/common.ttf");
+      this->gameManager->getBatch()->addTexture(0, getWorkingDirectory() + "/assets/images/tiles.png");
+      this->gameManager->getBatch()->addTexture(1, getWorkingDirectory() + "/assets/images/woodcutter_basement.png");
+      this->gameManager->getBatch()->addTexture(2, getWorkingDirectory() + "/assets/images/woodcutter_full.png");
+      return (this->gameManager->getBatch()->numErrors() == 0);
    }
 
    void GameEngine::runGameLoop(){
