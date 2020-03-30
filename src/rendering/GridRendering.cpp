@@ -29,7 +29,7 @@ namespace RTS{
 
               this->gl_vertexfx = &gl_vertexes[((MAPSIZE * y) + x) * 4];
 
-              int tile = 0;
+              int tile = this->grid->getTileID(x,y);
               int tx = tile % (gl_texture.getSize().x / TILEW);
               int ty = tile / (gl_texture.getSize().x / TILEW);
 
@@ -38,10 +38,14 @@ namespace RTS{
               this->gl_vertexfx[2].position = Vector2f(fx , fy + TILEH - this->grid->getPoint(x, y, 2));
               this->gl_vertexfx[3].position = Vector2f(fx - (TILEW / 2), fy + (TILEH / 2) - this->grid->getPoint(x, y, 3));
 
-              this->gl_vertexfx[0].texCoords = Vector2f(tx * TILEW, ty * TILEW);
-              this->gl_vertexfx[1].texCoords = Vector2f((tx+1) * TILEW, ty * TILEW);
-              this->gl_vertexfx[2].texCoords = Vector2f((tx+1) * TILEW, (ty+1) * TILEW);
-              this->gl_vertexfx[3].texCoords = Vector2f(tx * TILEW, (ty+1) * TILEW);
+              this->gl_vertexfx[0].texCoords = Vector2f((tx+0) * (TILEW+2), (ty+0) * (TILEW+2));
+              this->gl_vertexfx[1].texCoords = Vector2f((tx+1) * (TILEW-2), (ty+0) * (TILEW+2));
+              this->gl_vertexfx[2].texCoords = Vector2f((tx+1) * (TILEW-2), (ty+1) * (TILEW-2));
+              this->gl_vertexfx[3].texCoords = Vector2f((tx+0) * (TILEW+2), (ty+1) * (TILEW-2));
+
+              for(int c = 0; c<4 ;c++){
+                this->gl_vertexfx[c].color = this->grid->getPointColor(x, y, c);
+              }
 
               for(unsigned int fc = 0; fc < 4; fc++){
                 Vector2f fp = this->gameManager->getWindow()->mapPixelToCoords(

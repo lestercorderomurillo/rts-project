@@ -7,6 +7,10 @@ namespace RTS{
       this->camera        = new Camera(this->gameManager->getWindow());
       this->debugging     = new BaseRendering(this->gameManager);
       this->gridRenderer  = new GridRendering(this->gameManager, this->grid, this->camera);
+      /*this->grid->setTileCircleAreaHeight(8, 8, 5, 5);
+      this->grid->setTileCircleAreaHeight(8, 8, 10, 4);
+      this->grid->setTileCircleAreaHeight(8, 8, 15, 3);
+      this->grid->setTileCircleAreaID(8, 8, 1, 5);*/
    }
 
    WorldScene::~WorldScene(){
