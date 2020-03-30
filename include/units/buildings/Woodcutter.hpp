@@ -7,7 +7,7 @@ namespace RTS{
 
     class Woodcutter : public Building{
     public:
-      Woodcutter(GameManager*, int, int, int);
+      Woodcutter(GameManager*, Camera*, int, int, int);
       ~Woodcutter();
 
    };

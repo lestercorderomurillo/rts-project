@@ -38,10 +38,10 @@ namespace RTS{
               this->gl_vertexfx[2].position = Vector2f(fx , fy + TILEH - this->grid->getPoint(x, y, 2));
               this->gl_vertexfx[3].position = Vector2f(fx - (TILEW / 2), fy + (TILEH / 2) - this->grid->getPoint(x, y, 3));
 
-              this->gl_vertexfx[0].texCoords = Vector2f((tx+0) * (TILEW+2), (ty+0) * (TILEW+2));
-              this->gl_vertexfx[1].texCoords = Vector2f((tx+1) * (TILEW-2), (ty+0) * (TILEW+2));
-              this->gl_vertexfx[2].texCoords = Vector2f((tx+1) * (TILEW-2), (ty+1) * (TILEW-2));
-              this->gl_vertexfx[3].texCoords = Vector2f((tx+0) * (TILEW+2), (ty+1) * (TILEW-2));
+              this->gl_vertexfx[0].texCoords = Vector2f((tx+0) * (TILEW+1), (ty+0) * (TILEW+2));
+              this->gl_vertexfx[1].texCoords = Vector2f((tx+1) * (TILEW-1), (ty+0) * (TILEW+2));
+              this->gl_vertexfx[2].texCoords = Vector2f((tx+1) * (TILEW-1), (ty+1) * (TILEW-2));
+              this->gl_vertexfx[3].texCoords = Vector2f((tx+0) * (TILEW+1), (ty+1) * (TILEW-2));
 
               for(int c = 0; c<4 ;c++){
                 this->gl_vertexfx[c].color = this->grid->getPointColor(x, y, c);

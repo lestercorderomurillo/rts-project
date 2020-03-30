@@ -2,8 +2,9 @@
 
 namespace RTS{
 
-  Unit::Unit(GameManager* ptr, int t, int x, int y){
+  Unit::Unit(GameManager* ptr, Camera* c, int t, int x, int y){
     this->gameManager = ptr;
+    this->camera      = c;
     this->teamtag     = t;
     this->position_x  = x;
     this->position_y  = y;
@@ -17,6 +18,17 @@ namespace RTS{
   void Unit::resetHealth(int h){
     this->health_max = h;
     this->health_cur = h;
+  }
+
+  void Unit::resetOffset(int ox, int oy){
+    this->texture_offset_x = ox;
+    this->texture_offset_y = oy;
+
+  }
+
+  Sprite* Unit::getSprite(){
+    return &(this->texture);
+
   }
 
   void Unit::setTexture(Texture* txt){

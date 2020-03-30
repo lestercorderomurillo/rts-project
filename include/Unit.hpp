@@ -9,6 +9,8 @@
 #include <SFML/Graphics.hpp>
 #include "GameManager.hpp"
 
+#include "scenes/WorldScene/Camera.hpp"
+
 using namespace sf;
 using namespace std;
 
@@ -18,6 +20,7 @@ namespace RTS{
 
     protected:
       GameManager*   gameManager;
+      Camera*        camera;
       Sprite         texture;
       int            position_x;
       int            position_y;
@@ -26,12 +29,19 @@ namespace RTS{
       int            teamtag;
       string         nametag;
 
+      int            texture_offset_x;
+      int            texture_offset_y;
+      Vector2f       texture_position;
+
     public:
-      Unit(GameManager*, int, int, int);
+      Unit(GameManager*, Camera*, int, int, int);
       virtual ~Unit();
 
       void setTexture(Texture*);
       void resetHealth(int);
+      void resetOffset(int, int);
+
+      Sprite* getSprite();
 
       virtual void tick() = 0;
       virtual void draw() = 0;

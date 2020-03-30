@@ -9,7 +9,9 @@ namespace RTS{
       this->debugging     = new BaseRendering(this->gameManager);
       this->gridRenderer  = new GridRendering(this->gameManager, this->grid, this->camera);
 
-      this->dummy = new Woodcutter(this->gameManager, TEAM_RED, 0, 0);
+      this->dummy         = new Woodcutter(this->gameManager, this->camera, TEAM_RED, 10, 10);
+      this->debugging->setTextColor(Color(255,255,255));
+      this->debugging->setTextSize(14);
    }
 
    WorldScene::~WorldScene(){
@@ -17,20 +19,19 @@ namespace RTS{
       delete this->camera;
       delete this->gridRenderer;
       delete this->grid;
-
       delete this->dummy;
    }
 
    void WorldScene::tick(){
       this->camera->tick();
       this->gridRenderer->tick();
+      this->dummy->tick();
    }
 
    void WorldScene::draw(){
-      debugging->setTextColor(Color(255,255,255));
-      debugging->setTextSize(14);
-      debugging->drawText("(" + to_string(this->camera->getX()) + ", " + to_string(this->camera->getY()) + ")", 20, 20, true);
-      this->gameManager->getWindow()->draw(*this->gridRenderer);
+      this->gameManager->getWindow()->draw(*(this->gridRenderer));
+      this->dummy->draw();
+      this->debugging->drawText("(" + to_string(this->camera->getX()) + ", " + to_string(this->camera->getY()) + ")", 20, 20, true);
    }
 
 }
