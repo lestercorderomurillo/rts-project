@@ -1,5 +1,5 @@
 #include "scenes/WorldScene.hpp"
-#include "Unit.hpp"
+#include "units/buildings/Woodcutter.hpp"
 
 namespace RTS{
 
@@ -8,12 +8,8 @@ namespace RTS{
       this->camera        = new Camera(this->gameManager->getWindow());
       this->debugging     = new BaseRendering(this->gameManager);
       this->gridRenderer  = new GridRendering(this->gameManager, this->grid, this->camera);
-      /*this->grid->setTileCircleAreaHeight(8, 8, 5, 5);
-      this->grid->setTileCircleAreaHeight(8, 8, 10, 4);
-      this->grid->setTileCircleAreaHeight(8, 8, 15, 3);
-      this->grid->setTileCircleAreaID(8, 8, 1, 5);*/
 
-      Unit dummy(this->gameManager);
+      this->dummy = new Woodcutter(this->gameManager, TEAM_RED, 0, 0);
    }
 
    WorldScene::~WorldScene(){
@@ -21,6 +17,8 @@ namespace RTS{
       delete this->camera;
       delete this->gridRenderer;
       delete this->grid;
+
+      delete this->dummy;
    }
 
    void WorldScene::tick(){

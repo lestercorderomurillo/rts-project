@@ -39,6 +39,7 @@ namespace RTS{
 
    GameEngine::~GameEngine(){
      delete this->gameManager;
+     delete this->currentScene;
    }
 
    int GameEngine::fetchResources(){

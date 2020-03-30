@@ -6,13 +6,11 @@
 namespace RTS{
 
     class Building : public Unit{
-    protected:
-      
-
     public:
-      Building();
+      Building(GameManager*, int, int, int);
+      ~Building();
 
-      void defaultTick();
+      void presetTick();
       void tick();
       void draw();
 

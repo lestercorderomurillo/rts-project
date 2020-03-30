@@ -1,15 +1,25 @@
-#ifndef RTS_BUILDING
-#define RTS_BUILDING
+#include "units/Building.hpp"
 
 namespace RTS{
 
-    class Building : public Unit{
-    private:
-    public:
-      Building();
+  Building::Building(GameManager* ptr, int t, int x, int y) : Unit(ptr, t, x, y){
+  
+  }
 
-   };
+  Building::~Building(){
 
- }
+  }
 
- #endif
+  void Building::presetTick(){
+
+  }
+
+  void Building::tick(){
+
+  }
+
+  void Building::draw(){
+
+  }
+    
+}

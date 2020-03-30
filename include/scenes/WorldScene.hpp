@@ -8,6 +8,8 @@
 
 #include "WorldScene/Camera.hpp"
 
+#include "Unit.hpp"
+
 namespace RTS{
 
     class WorldScene : public Scene{
@@ -18,6 +20,8 @@ namespace RTS{
 
       Camera*         camera;
       Grid*           grid;
+
+      Unit*           dummy;
       
     public:
       WorldScene(GameManager* ptr);
