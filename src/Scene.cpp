@@ -3,7 +3,7 @@
 namespace RTS{
 
    Scene::Scene(GameManager* ptr){
-     this->gameManager = ptr;
+     this->game_manager = ptr;
    }
 
    Scene::~Scene(){

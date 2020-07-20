@@ -3,18 +3,21 @@
 
  #include <string>
 
+using namespace std;
+
  namespace RTS{
 
     class LogSystem{
     private:
+    
       /*string       logPath;
       list<string> logData;*/
 
     public:
       LogSystem();
 
-      void out(std::string);
-      void out(int, std::string);
+      void out(string message);
+      void out(int, string message);
       int  reportToFile();
 
    };

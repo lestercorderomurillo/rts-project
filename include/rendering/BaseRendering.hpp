@@ -14,18 +14,18 @@ namespace RTS{
         
     private:
 
-        GameManager* gmptr;
-        FloatRect    r_bounds;
-        Text         r_text;
+        GameManager*       gmptr;
+        FloatRect       r_bounds;
+        Text              r_text;
         Color        p_textColor;
-        int          p_textSize;
+        int           p_textSize;
 
     public:
 
-      BaseRendering(GameManager*);
-      void setTextColor(Color);
-      void setTextSize(int);
-      void drawText(string, int, int, bool);
+      BaseRendering(GameManager* gm_ptr);
+      void setTextColor(Color color);
+      void setTextSize(int size);
+      void drawText(string value, int x, int y, bool relative);
 
    };
 

@@ -23,10 +23,10 @@ namespace RTS{
         Texture      gl_texture;
 
     public:
-      GridRendering(GameManager*, Grid*, Camera*);
+      GridRendering(GameManager* gm_ptr, Grid* grid_ptr, Camera* cam_ptr);
 
       void tick();
-      virtual void draw(RenderTarget&, RenderStates) const;
+      virtual void draw(RenderTarget& gl_target, RenderStates gl_states) const;
       
    };
 

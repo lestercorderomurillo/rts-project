@@ -1,9 +1,8 @@
 #include "scenes/WorldScene/Grid.hpp"
-
 namespace RTS{
-
+  
     Grid::Grid(){
-       reset();
+      reset();
     }
 
     void Grid::reset(){
@@ -45,11 +44,11 @@ namespace RTS{
       return this->world_tile[x][y];
     }
 
-    int Grid::getPoint(int x, int y, int p){
+    int Grid::getPoint(int x, int y, int point){
       if(x < 0 || x == MAPSIZE || y < 0 || y == MAPSIZE){
         return 0;
       }
-      switch(p){
+      switch(point){
         case 0: return this->world_grid[x+0][y+0]; break;
         case 1: return this->world_grid[x+1][y+0]; break;
         case 2: return this->world_grid[x+1][y+1]; break;
@@ -62,8 +61,8 @@ namespace RTS{
       this->world_tile[x][y] = value;
     }
 
-    void Grid::setPoint(int x, int y, int p, int value){
-      switch(p){
+    void Grid::setPoint(int x, int y, int point, int value){
+      switch(point){
         case 0: this->world_grid[x+0][y+0] = value; break;
         case 1: this->world_grid[x+1][y+0] = value; break;
         case 2: this->world_grid[x+1][y+1] = value; break;
@@ -80,44 +79,39 @@ namespace RTS{
       this->updateLighting();
     }
 
-    void Grid::setTileAreaHeight(int x, int y, int value, int area){
-      for(int xx = 0; xx < MAPSIZE; xx++){
-        for(int yy = 0; yy < MAPSIZE; yy++){
+    void Grid::setTileAreaHeight(int x, int y, int value, int area_x, int area_y){
+      for(int xx = 0; xx < area_x; xx++){
+        for(int yy = 0; yy < area_y; yy++){
           this->setTileHeight(x + xx, y + yy, value);
         }
       }
     }
 
-    void Grid::setTileCircleAreaHeight(int a, int b, int value, int area){
-      for(int x = 0; x < MAPSIZE; x++){
-        for(int y = 0; y < MAPSIZE; y++){
-
-         if ( ( pow((x-a),2) + pow((y-b),2) - pow(area,2) ) < pow(EPSILON,2)){
-          this->setTileHeight(x, y, value);
+    void Grid::setTileCircleAreaHeight(int x, int y, int value, int area){
+      for(int a = 0; a < MAPSIZE; a++){
+        for(int b = 0; b < MAPSIZE; b++){
+         if ( ( pow((a-x),2) + pow((b-y),2) - pow(area,2) ) < pow(EPSILON,2)){
+          this->setTileHeight(a, b, value);
          }
-
         }
       }
       this->updateLighting();
     }
 
-    void Grid::setTileCircleAreaID(int a, int b, int value, int area){
+    void Grid::setTileCircleAreaID(int x, int y, int value, int area){
 
-      for(int x = 0; x < MAPSIZE; x++){
-        for(int y = 0; y < MAPSIZE; y++){
-
-         if ( ( pow((x-a),2) + pow((y-b),2) - pow(area,2) ) < pow(EPSILON,2)){
+      for(int a = 0; a < MAPSIZE; a++){
+        for(int b = 0; b < MAPSIZE; b++){
+         if ( ( pow((a-x),2) + pow((b-y),2) - pow(area,2) ) < pow(EPSILON,2)){
           this->setTileID(x, y, value);
          }
-
         }
       }
 
     }
 
-
-    Color Grid::getPointColor(int x, int y, int p){
-      switch(p){
+    Color Grid::getPointColor(int x, int y, int point){
+      switch(point){
         case 0: return this->world_lite[x+0][y+0]; break;
         case 1: return this->world_lite[x+1][y+0]; break;
         case 2: return this->world_lite[x+1][y+1]; break;

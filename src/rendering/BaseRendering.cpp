@@ -1,8 +1,8 @@
 #include "rendering/BaseRendering.hpp"
 namespace RTS{
 
-    BaseRendering::BaseRendering(GameManager* ptr){
-        this->gmptr = ptr;
+    BaseRendering::BaseRendering(GameManager* gm_ptr){
+        this->gmptr = gm_ptr;
     }
 
     void BaseRendering::setTextColor(Color color){

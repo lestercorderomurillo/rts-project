@@ -6,10 +6,10 @@ namespace RTS{
 
     class Scene{
     protected:
-      GameManager* gameManager;
+      GameManager* game_manager;
 
     public:
-      Scene(GameManager*);
+      Scene(GameManager* gm_ptr);
       virtual ~Scene();
       virtual void tick();
       virtual void draw();

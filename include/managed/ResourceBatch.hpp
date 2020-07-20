@@ -17,9 +17,9 @@ using namespace std;
       
     private:
 
-      LogSystem*  output;
-      int         errorCounter;
-      Font        fonts[MEMORY_SIZE];
+      LogSystem*                 output;
+      int                  errorCounter;
+      Font           fonts[MEMORY_SIZE];
       Texture     textures[MEMORY_SIZE];
 
     public:

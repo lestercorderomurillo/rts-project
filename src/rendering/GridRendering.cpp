@@ -6,10 +6,10 @@ using namespace sf;
 
 namespace RTS{
 
-    GridRendering::GridRendering(GameManager* ptra, Grid* ptrb, Camera* ptrc){
-      this->gameManager = ptra;
-      this->grid        = ptrb;
-      this->camera      = ptrc;
+    GridRendering::GridRendering(GameManager* gm_ptr, Grid* grid_ptr, Camera* cam_ptr){
+      this->gameManager = gm_ptr;
+      this->grid        = grid_ptr;
+      this->camera      = cam_ptr;
       this->gl_texture  = *this->gameManager->getBatch()->getTexture(0);
     }
 

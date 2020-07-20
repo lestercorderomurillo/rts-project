@@ -10,8 +10,8 @@ namespace RTS{
     class GameEngine{
     private:
     
-      GameManager*   gameManager;
-      Scene*         currentScene;
+      GameManager*    game_manager;
+      Scene*         current_scene;
 
     public:
       GameEngine();

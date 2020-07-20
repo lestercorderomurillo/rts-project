@@ -14,7 +14,9 @@ namespace RTS{
      this->logger = new LogSystem();
      this->window = new RenderWindow(VideoMode(1280, 720), "Project", Style::Default, glset);
      this->window->setFramerateLimit(60);
+     this->window->setVerticalSyncEnabled(true);
      this->window->setView(viewset);
+ 
      this->batch = new ResourceBatch(this->logger);
 
    }

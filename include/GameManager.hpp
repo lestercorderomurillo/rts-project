@@ -17,7 +17,7 @@ namespace RTS{
 
       RenderWindow*  window;
       LogSystem*     logger;
-      ResourceBatch* batch;
+      ResourceBatch*  batch;
 
     public:
       GameManager();
