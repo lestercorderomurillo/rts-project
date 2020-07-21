@@ -41,3 +41,8 @@ release: all
 
 clean:
 	-@rm -rvf $(OBJ_DIR)/*
+	
+git:
+	git add .
+	git commit -m "$m"
+	git push -u origin master

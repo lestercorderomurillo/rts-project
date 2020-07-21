@@ -19,7 +19,7 @@ namespace RTS{
       Sprite               basement_texture;
 
     public:
-      Building(GameManager* gm_ptr, Camera* cam_ptr, int team, int x, int y);
+      Building(GameManager* gm_ptr, Camera* cam_ptr, int team, int x, int y, string name);
       ~Building();
 
       void setBasementTexture(Texture* texture_ptr);
@@ -30,7 +30,6 @@ namespace RTS{
       void renderHealthbar();
 
       Sprite* getBasementSprite();
-
 
       void presetTick();
       void presetDraw();

@@ -1,4 +1,6 @@
+#include "scenes/WorldScene.hpp"
 #include "scenes/WorldScene/Grid.hpp"
+
 namespace RTS{
   
     Grid::Grid(){
@@ -8,7 +10,7 @@ namespace RTS{
     void Grid::reset(){
       for(int x = 0; x < MAPSIZE; x++){
         for(int y = 0; y < MAPSIZE; y++){
-          this->world_tile[x][y] = 0;
+          this->world_tile[x][y] = Grid::TILE_GRASS;
         }
       }
 
@@ -103,7 +105,7 @@ namespace RTS{
       for(int a = 0; a < MAPSIZE; a++){
         for(int b = 0; b < MAPSIZE; b++){
          if ( ( pow((a-x),2) + pow((b-y),2) - pow(area,2) ) < pow(EPSILON,2)){
-          this->setTileID(x, y, value);
+          this->setTileID(a, b, value);
          }
         }
       }

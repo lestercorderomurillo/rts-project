@@ -19,34 +19,49 @@ namespace RTS{
     class Unit{
 
     protected:
-      GameManager*   game_manager;
-      Camera*        camera;
+      GameManager*      game_manager;
+      Camera*                 camera;
 
-      Sprite         texture;
+      Sprite                 texture;
       
-      int            position_x;
-      int            position_y;
-      int            health_current;
-      int            health_maximum;
-      int            teamtag;
-      string         nametag;
+      float               position_x;
+      float               position_y;
+      float           health_current;
+      float           health_maximum;
+      float             health_regen;
+      int                    teamtag;
+      string                 nametag;
 
-      int            texture_offset_x;
-      int            texture_offset_y;
-      Vector2f       texture_position;
+      int           texture_offset_x;
+      int           texture_offset_y;
+      Vector2f      texture_position;
 
     public:
-      Unit(GameManager* gm_ptr, Camera* cam_ptr, int team, int x, int y);
+
+      static bool shadow_render_flag;
+      
+      struct SortByPosition{
+        bool operator()(Unit* unit_left, Unit* unit_right){
+          return ((unit_left->getPosition().x + unit_left->getPosition().y)
+              <  (unit_right->getPosition().x + unit_right->getPosition().y));
+        }
+      };
+
+      Unit(GameManager* gm_ptr, Camera* cam_ptr, int team, int x, int y, string name);
       virtual ~Unit();
       void setTexture(Texture* texture_ptr);
-      void resetHealth(int value);
+      void resetHealth(int value, float regen);
       void resetOffset(int offset_x, int offset_y);
-      float getPercentage(float value, float total);
       Sprite* getSprite();
 
       virtual void tick() = 0;
       virtual void draw() = 0;
 
+      Vector2f getPosition();
+      int      getCurrentHealth();
+
+      // move to utils...
+      float getPercentage(float value, float total);
       int round10(int value, int roundfactor);
       float clamp(float minvalue, float maxvalue, float value);
 

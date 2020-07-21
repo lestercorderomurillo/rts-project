@@ -33,6 +33,10 @@ namespace RTS{
       void setTileCircleAreaID(int x, int y, int value, int area);
       Color getPointColor(int x, int y, int point);
 
+      static const int TILE_DEBUG = 0;
+      static const int TILE_GRASS = 1;
+      static const int TILE_STONE = 2;
+
    };
 
  }

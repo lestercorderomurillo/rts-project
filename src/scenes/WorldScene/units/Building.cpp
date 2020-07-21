@@ -1,9 +1,10 @@
+#include "GameEngine.hpp"
 #include "scenes/WorldScene/Grid.hpp"
 #include "scenes/WorldScene/units/Building.hpp"
 
 namespace RTS{
 
-  Building::Building(GameManager* gm_ptr, Camera* cam_ptr, int team, int x, int y) : Unit(gm_ptr, cam_ptr, team, x, y){
+  Building::Building(GameManager* gm_ptr, Camera* cam_ptr, int team, int x, int y, string name) : Unit(gm_ptr, cam_ptr, team, x, y, name){
 
     this->workers_on_me = 0;
 
@@ -42,7 +43,9 @@ namespace RTS{
 
     this->texture_position = this->game_manager->getWindow()->mapPixelToCoords(Vector2i(fx,fy));
 
-    this->renderShadow();
+    if(Unit::shadow_render_flag){
+      this->renderShadow();
+    }
     this->renderSprite();
     this->renderHealthbar();
 
@@ -50,7 +53,9 @@ namespace RTS{
 
   void Building::presetDraw(){
 
-    this->game_manager->getWindow()->draw(this->shadow_shape);
+    if(Unit::shadow_render_flag){
+      this->game_manager->getWindow()->draw(this->shadow_shape);
+    }
 
     float healthbar_percentage = this->getPercentage(this->health_current, this->health_maximum);
 
@@ -126,9 +131,11 @@ namespace RTS{
   }
 
   void Building::renderHealthbar(){
+
     if((this->health_current < this->health_maximum) && this->workers_on_me > 0){
 
-      this->health_current += (1 * this->workers_on_me);
+      this->health_current += (this->health_regen * (float)this->workers_on_me * GameEngine::current_delta);
+
       float healthbar_percentage = this->getPercentage(this->health_current, this->health_maximum);
       this->healthbar_current.setSize(Vector2f( healthbar_percentage * 1.0f , 4.0f));
 
@@ -145,6 +152,10 @@ namespace RTS{
       }
 
       this->healthbar_current.setFillColor(healthbar_color);
+
+    }else{
+
+      this->health_current = this->health_maximum;
 
     }
 

@@ -12,6 +12,9 @@ namespace RTS{
    void Scene::tick(){
    }
 
+   void Scene::tickEvent(Event* eventHandler){
+   }
+
    void Scene::draw(){
    }
 

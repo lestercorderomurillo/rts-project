@@ -3,7 +3,7 @@
 namespace RTS{
 
   Woodcutter::Woodcutter(GameManager* gm_ptr, Camera* cam_ptr, int team, int x, int y) : 
-  Building(gm_ptr, cam_ptr, team, x, y){
+  Building(gm_ptr, cam_ptr, team, x, y, "Woodcutter"){
 
     this->setBasementTexture(this->game_manager->getBatch()->getTexture(1));
     this->setTexture(        this->game_manager->getBatch()->getTexture(2));
@@ -15,7 +15,9 @@ namespace RTS{
 
     this->resetOffset(-30, 20);
 
-    this->resetHealth(3000);
+    float health = 650; // Hit points
+    float seconds = 180; // Take 30 secs for 1 worker
+    this->resetHealth(health, health/seconds);
     this->initBuild();
   }
 
