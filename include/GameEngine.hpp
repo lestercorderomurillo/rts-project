@@ -5,6 +5,8 @@
 #include "Scene.hpp"
 #include <string>
 
+using namespace std;
+
 namespace RTS{
 
     class GameEngine{
@@ -17,11 +19,19 @@ namespace RTS{
       GameEngine();
       ~GameEngine();
 
-      std::string getWorkingDirectory();
+      static int  current_fpsec_hr;
+      static int  current_fpsec_lr;
+      static float   current_delta;
+      static bool    gameIsRunning;
+
+      string getWorkingDirectory();
+      static int getInternalFramesPerSecond();
       int fetchResources();
       void runGameLoop();
 
    };
+
+   void thread_fps_sync();
 
  }
 

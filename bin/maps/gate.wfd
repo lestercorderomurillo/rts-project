@@ -1,0 +1,27 @@
+min_build_req
+world_name
+world_autor
+{tile_map}
+{height_map}
+team_map                       (0 off, 1 = player,2 = AI Easy, 3 = AI Medium, 4 = AI Hard)
+customflags
+game_obj_id, game_instance_id, (obj id, team, name, x, y, health, params... (unit level, spell_map))
+time_played
+date_created
+
+2
+test_level_1
+_cyborgwillnotdie_
+0 0
+0 0
+0 0 0
+0 0 0
+0 0 0
+1100
+000000000000000
+3 0 1 /Woodcutter_1/ 10 10 800
+15 1 17 1 /Worker_1/ 30 30 100 4 05000000000
+23 1 0 22000000000000000000000000 
+17 2 8
+256124
+Wed 24 June 2020

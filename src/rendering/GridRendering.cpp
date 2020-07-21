@@ -10,6 +10,7 @@ namespace RTS{
       this->gameManager = gm_ptr;
       this->grid        = grid_ptr;
       this->camera      = cam_ptr;
+      this->renderDebug = false;
       this->gl_texture  = *this->gameManager->getBatch()->getTexture(0);
     }
 
@@ -30,6 +31,9 @@ namespace RTS{
               this->gl_vertexfx = &gl_vertexes[((MAPSIZE * y) + x) * 4];
 
               int tile = this->grid->getTileID(x,y);
+              if(this->renderDebug){
+                tile = 0;
+              }
               int tx = tile % (gl_texture.getSize().x / TILEW);
               int ty = tile / (gl_texture.getSize().x / TILEW);
 
@@ -45,6 +49,9 @@ namespace RTS{
 
               for(int c = 0; c<4 ;c++){
                 this->gl_vertexfx[c].color = this->grid->getPointColor(x, y, c);
+                if(tile == 0 && !this->renderDebug){
+                  this->gl_vertexfx[c].color = Color::Transparent;
+                }
               }
 
               for(unsigned int fc = 0; fc < 4; fc++){

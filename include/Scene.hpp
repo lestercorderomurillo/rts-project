@@ -12,6 +12,7 @@ namespace RTS{
       Scene(GameManager* gm_ptr);
       virtual ~Scene();
       virtual void tick();
+      virtual void tickEvent(Event* eventHandler);
       virtual void draw();
 
    };

@@ -14,15 +14,17 @@ namespace RTS{
     class GridRendering : public Drawable, public Transformable{
 
     private:
-        GameManager* gameManager;
-        Camera*      camera;
-        Grid*        grid;
+      GameManager* gameManager;
+      Camera*      camera;
+      Grid*        grid;
 
-        VertexArray  gl_vertexes;
-        Vertex*      gl_vertexfx;
-        Texture      gl_texture;
+      VertexArray  gl_vertexes;
+      Vertex*      gl_vertexfx;
+      Texture      gl_texture;
 
     public:
+
+      bool         renderDebug;
       GridRendering(GameManager* gm_ptr, Grid* grid_ptr, Camera* cam_ptr);
 
       void tick();

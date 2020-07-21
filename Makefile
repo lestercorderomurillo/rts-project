@@ -1,6 +1,6 @@
-LIBS     := -lsfml-graphics -lsfml-window -lsfml-system
+LIBS     := -lsfml-graphics -lsfml-window -lsfml-system -lpthread
 CXX      := -g++
-CXXFLAGS := -std=c++11
+CXXFLAGS := -std=c++11 -g3
 BUILD    := ./build
 OBJ_DIR  := obj
 APP_DIR  := bin

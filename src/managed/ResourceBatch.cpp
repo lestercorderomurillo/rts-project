@@ -19,20 +19,26 @@ namespace RTS{
     
 
     void ResourceBatch::addTexture(int storeTo, string path){
-      if (!textures[storeTo].loadFromFile(path)){
-        this->errorCounter++;
-      }else{
-        this->output->out("Sprite with ID: " + to_string(storeTo) + " fetched successfully from '"  + path.substr((size_t)(path.find("images"))) + "'");
-        textures[storeTo].setSmooth(false);
+      {
+        ErrBlock outlock;
+        if (!textures[storeTo].loadFromFile(path)){
+          this->errorCounter++;
+          this->output->out(2, "Error while loading '"  + path.substr((size_t)(path.find("images"))) + "'");
+        }else{
+          textures[storeTo].setSmooth(false);
+        }
       }
     }
 
     void ResourceBatch::addFont(int storeTo, string path){
-      if (!fonts[storeTo].loadFromFile(path)){
-        this->errorCounter++;
-      }else{
-        this->output->out("Font with ID: " + to_string(storeTo) + " fetched successfully from '"  + path.substr((size_t)(path.find("font"))) + "'");
+      {
+        ErrBlock outlock;
+        if (!fonts[storeTo].loadFromFile(path)){
+          this->errorCounter++;
+          this->output->out(2, "Error while loading '"  + path.substr((size_t)(path.find("font"))) + "'");
+        }
       }
+      
     }
 
     Texture* ResourceBatch::getTexture(int from){

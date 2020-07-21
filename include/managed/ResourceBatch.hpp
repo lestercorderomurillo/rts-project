@@ -11,7 +11,7 @@
 using namespace sf;
 using namespace std;
 
- namespace RTS{
+namespace RTS{
 
     class ResourceBatch{
       
@@ -33,8 +33,8 @@ using namespace std;
       Font* getFont(int from);
       int numErrors();
 
-   };
+  };
 
- }
+}
 
- #endif
+#endif
